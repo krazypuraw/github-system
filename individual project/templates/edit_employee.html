@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Employee{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2 cyber-text">Edit Employee</h1>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4><i class="fas fa-user-edit me-2"></i>Employee Details</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('edit_employee', employee_id=employee[0]) }}">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" 
+                           value="{{ employee[1] }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" 
+                           value="{{ employee[2] }}" required>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" 
+                       value="{{ employee[3] }}" required>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="department" class="form-label">Department</label>
+                    <select class="form-select" id="department" name="department" required>
+                        <option value="Engineering" {% if employee[4] == 'Engineering' %}selected{% endif %}>Engineering</option>
+                        <option value="Marketing" {% if employee[4] == 'Marketing' %}selected{% endif %}>Marketing</option>
+                        <option value="Sales" {% if employee[4] == 'Sales' %}selected{% endif %}>Sales</option>
+                        <option value="HR" {% if employee[4] == 'HR' %}selected{% endif %}>Human Resources</option>
+                        <option value="Finance" {% if employee[4] == 'Finance' %}selected{% endif %}>Finance</option>
+                        <option value="IT" {% if employee[4] == 'IT' %}selected{% endif %}>Information Technology</option>
+                        <option value="Operations" {% if employee[4] == 'Operations' %}selected{% endif %}>Operations</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="position" class="form-label">Position</label>
+                    <input type="text" class="form-control" id="position" name="position" 
+                           value="{{ employee[5] }}" required>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="salary" class="form-label">Salary</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="salary" name="salary" 
+                               step="0.01" min="0" value="{{ employee[6] }}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="hire_date" class="form-label">Hire Date</label>
+                    <input type="date" class="form-control" id="hire_date" name="hire_date" 
+                           value="{{ employee[7] }}" required>
+                </div>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('employees') }}" class="btn btn-secondary me-md-2">
+                    <i class="fas fa-times me-1"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save me-1"></i> Update Employee
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

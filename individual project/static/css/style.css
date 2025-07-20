@@ -1,0 +1,180 @@
+:root {
+    --primary-color: #6e00ff;
+    --secondary-color: #ff00aa;
+    --dark-color: #0a0a12;
+    --light-color: #e0e0e0;
+    --accent-color: #00ffaa;
+    --text-color: #ffffff;
+    --card-bg: rgba(30, 30, 50, 0.7);
+    --glow: 0 0 10px rgba(110, 0, 255, 0.7);
+}
+
+body.cyber-theme {
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(110, 0, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 170, 0.1) 0%, transparent 20%);
+}
+
+.cyber-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+.neon-text {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+.sidebar {
+    background-color: rgba(10, 10, 20, 0.9);
+    border-right: 1px solid rgba(110, 0, 255, 0.3);
+    min-height: 100vh;
+    padding: 20px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    color: var(--light-color);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+    background-color: rgba(110, 0, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-left: 3px solid var(--primary-color);
+}
+
+.logout-link {
+    color: var(--secondary-color) !important;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(110, 0, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: var(--glow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(110, 0, 255, 0.9);
+}
+
+.card-header {
+    background-color: rgba(110, 0, 255, 0.2);
+    border-bottom: 1px solid rgba(110, 0, 255, 0.3);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: var(--glow);
+}
+
+.btn-danger {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-danger:hover {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(255, 0, 170, 0.7);
+}
+
+.form-control {
+    background-color: rgba(30, 30, 50, 0.7);
+    border: 1px solid rgba(110, 0, 255, 0.3);
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    background-color: rgba(30, 30, 50, 0.9);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: var(--glow);
+}
+
+.table {
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: rgba(110, 0, 255, 0.3);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.table td {
+    border-top: 1px solid rgba(110, 0, 255, 0.2);
+}
+
+/* Login/Signup Forms */
+.auth-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--glow);
+    border: 1px solid rgba(110, 0, 255, 0.3);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h2 {
+    color: var(--primary-color);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px var(--primary-color); }
+    50% { box-shadow: 0 0 20px var(--primary-color); }
+    100% { box-shadow: 0 0 5px var(--primary-color); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        width: 100%;
+    }
+    main {
+        padding-top: 20px;
+    }
+}
