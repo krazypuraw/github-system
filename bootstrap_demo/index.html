@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            background-color: #e6f2f0; /* soft teal background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-wrapper {
+            background-color: #fff8f4; /* very light coral */
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 360px;
+        }
+
+        .login-header {
+            font-size: 30px;
+            font-weight: bold;
+            color: #3e4a89; /* navy blue */
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #c1f0f6; /* light cyan */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #6a097d; /* deep violet */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #fcfcfc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #b83b5e; /* reddish-violet */
+        }
+
+        .submit-btn {
+            background-color: #556b2f; /* olive green */
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #3e5523;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="login-wrapper">
+        <div class="login-header">Login Portal</div>
+        <div class="form-control">
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" placeholder="Type your username">
+        </div>
+        <div class="form-control">
+            <label for="password">Pass Code</label>
+            <input type="password" id="password" name="password" placeholder="Type your password">
+        </div>
+        <button class="submit-btn">Sign In</button>
+    </div>
+
+</body>
+</html>

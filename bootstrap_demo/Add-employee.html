@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Men's Employee Tracker</title>
+  <style>
+    body {
+      font-family: 'Verdana', sans-serif;
+      background-color: #1e1e2f;
+      color: #e0e0e0;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #00bcd4;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #2c2f48;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .form-row input {
+      flex: 1 1 20%;
+      min-width: 160px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #1c1c2e;
+      color: #fff;
+    }
+
+    .form-row button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .form-row button:hover {
+      background-color: #004d40;
+    }
+
+    .reset-btn {
+      background-color: #b71c1c;
+      margin-left: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    thead {
+      background-color: #37474f;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #555;
+    }
+
+    th {
+      color: #00acc1;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2e3b4e;
+    }
+
+    tr:hover {
+      background-color: #455a64;
+    }
+
+    .delete-btn {
+      background-color: #d84315;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: #bf360c;
+    }
+
+    .message {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .message.success {
+      color: #4caf50;
+    }
+
+    .message.error {
+      color: #f44336;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Employee</h1>
+
+  <div class="container">
+    <div class="form-row">
+      <input type="text" id="empId" placeholder="ID">
+      <input type="text" id="lastName" placeholder="Last Name">
+      <input type="text" id="position" placeholder="Position">
+      <input type="text" id="office" placeholder="Office">
+      <button onclick="addEmployee()">Add</button>
+      <button class="reset-btn" onclick="resetTable()">Reset</button>
+    </div>
+
+    <div class="message" id="messageBox"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Last Name</th>
+          <th>Position</th>
+          <th>Office</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTable">
+        <!-- Employee rows go here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const maxRows = 15;
+
+    function showMessage(msg, type = 'success') {
+      const box = document.getElementById("messageBox");
+      box.textContent = msg;
+      box.className = `message ${type}`;
+      box.style.display = 'block';
+      setTimeout(() => box.style.display = 'none', 3000);
+    }
+
+    function addEmployee() {
+      const id = document.getElementById("empId").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const position = document.getElementById("position").value.trim();
+      const office = document.getElementById("office").value.trim();
+      const table = document.getElementById("employeeTable");
+
+      if (!id || !lastName || !position || !office) {
+        showMessage("Please fill in all fields.", "error");
+        return;
+      }
+
+      if (table.rows.length >= maxRows) {
+        showMessage("Maximum of 15 employees reached.", "error");
+        return;
+      }
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${id}</td>
+        <td>${lastName}</td>
+        <td>${position}</td>
+        <td>${office}</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+      `;
+      table.appendChild(row);
+
+      document.getElementById("empId").value = "";
+      document.getElementById("lastName").value = "";
+      document.getElementById("position").value = "";
+      document.getElementById("office").value = "";
+
+      showMessage("Employee added successfully.");
+    }
+
+    function deleteRow(button) {
+      const row = button.closest("tr");
+      row.remove();
+      showMessage("Employee deleted.", "success");
+    }
+
+    function resetTable() {
+      const table = document.getElementById("employeeTable");
+      table.innerHTML = "";
+      showMessage("All employees cleared.", "success");
+    }
+  </script>
+
+</body>
+</html>
